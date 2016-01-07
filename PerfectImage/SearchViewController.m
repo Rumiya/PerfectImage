@@ -20,6 +20,9 @@
 @property NSMutableArray *favoritesArray;
 @property NSString *clientId;
 @property NSString *keyword;
+@property NSURL *nextUrl;
+@property BOOL continueSearch;
+@property BOOL newSearch;
 
 @end
 
@@ -33,11 +36,7 @@
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
     NSDictionary *configuration = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 
- //   NSString *token = configuration[@"Instagram API"][@"Access Token"];
     self.clientId = configuration[@"Instagram API"][@"Client ID"];
-    //self.keyword = @"travel";
-
-
 
     [self setcollectionViewFloat];
     
@@ -47,7 +46,7 @@
 - (void) getInstagramData:(NSURL *)url
 {
     [self.spinner startAnimating];
-    if (self.photos != nil) {
+    if ((self.photos != nil) && self.newSearch) {
         [self.photos  removeAllObjects];
     }
 
@@ -56,6 +55,9 @@
         if (data != nil) {
 
             NSDictionary *instaJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error: nil];
+
+            NSDictionary *pagination = instaJSON[@"pagination"];
+            self.nextUrl = [NSURL URLWithString: pagination[@"next_url"]];
 
             NSArray *instaData = instaJSON[@"data"];
 
@@ -73,6 +75,8 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
+            self.continueSearch = YES;
+            self.newSearch = NO;
             
             [self.spinner stopAnimating];
         });
@@ -90,6 +94,8 @@
 {
     if ([searchBar.text length] != 0)
     {
+        self.continueSearch = NO;
+        self.newSearch = YES;
         self.keyword = searchBar.text;
 
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@",self.keyword,self.clientId]];
@@ -104,10 +110,25 @@
     [searchBar resignFirstResponder];
 }
 
+#pragma mark - Scroll View
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    if (self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) && (self.nextUrl) && self.continueSearch) {
+        [self getInstagramData:self.nextUrl];
+        self.continueSearch = NO;
+    }
+}
 
 #pragma mark - Collection View
 
+
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+
+    if (self.photos == nil) {
+        return 0;
+    }
+
     return self.photos.count;
 }
 
