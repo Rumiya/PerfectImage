@@ -8,17 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
 
-@interface Photo : NSObject <NSCoding>
+@interface Photo : NSObject
 
 @property UIImage *image;
-@property UIImage *thumbnail;
-@property NSString *photoID;
-@property BOOL isFavorite;
-@property double latitude;
-@property double longitude;
+
 
 -(instancetype) initWithDictionary:(NSDictionary *)dictionary;
+
 @end
 

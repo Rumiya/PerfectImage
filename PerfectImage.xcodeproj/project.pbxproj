@@ -20,6 +20,7 @@
 		E0024F981C3EE77900CC3873 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0024F971C3EE77900CC3873 /* FavoritesViewController.m */; };
 		E0024F9B1C3EEAB600CC3873 /* ThumbnailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0024F9A1C3EEAB600CC3873 /* ThumbnailCollectionViewCell.m */; };
 		E0024F9D1C3EEBDC00CC3873 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0024F9C1C3EEBDC00CC3873 /* Config.plist */; };
+		E0024FA01C3F14E700CC3873 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0024F9F1C3F14E700CC3873 /* PhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		E0024F991C3EEAB600CC3873 /* ThumbnailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailCollectionViewCell.h; sourceTree = "<group>"; };
 		E0024F9A1C3EEAB600CC3873 /* ThumbnailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailCollectionViewCell.m; sourceTree = "<group>"; };
 		E0024F9C1C3EEBDC00CC3873 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		E0024F9E1C3F14E700CC3873 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		E0024F9F1C3F14E700CC3873 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 				E0024F611C3EDE5700CC3873 /* SearchViewController.m */,
 				E0024F991C3EEAB600CC3873 /* ThumbnailCollectionViewCell.h */,
 				E0024F9A1C3EEAB600CC3873 /* ThumbnailCollectionViewCell.m */,
+				E0024F9E1C3F14E700CC3873 /* PhotoViewController.h */,
+				E0024F9F1C3F14E700CC3873 /* PhotoViewController.m */,
 				E0024F961C3EE77900CC3873 /* FavoritesViewController.h */,
 				E0024F971C3EE77900CC3873 /* FavoritesViewController.m */,
 			);
@@ -318,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0024F621C3EDE5700CC3873 /* SearchViewController.m in Sources */,
+				E0024FA01C3F14E700CC3873 /* PhotoViewController.m in Sources */,
 				E0024F681C3EDE5700CC3873 /* PerfectImage.xcdatamodeld in Sources */,
 				E0024F9B1C3EEAB600CC3873 /* ThumbnailCollectionViewCell.m in Sources */,
 				E0024F981C3EE77900CC3873 /* FavoritesViewController.m in Sources */,
