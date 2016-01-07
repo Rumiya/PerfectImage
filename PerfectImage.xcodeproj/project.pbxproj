@@ -16,6 +16,7 @@
 		E0024F6D1C3EDE5700CC3873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0024F6B1C3EDE5700CC3873 /* LaunchScreen.storyboard */; };
 		E0024F781C3EDE5700CC3873 /* PerfectImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0024F771C3EDE5700CC3873 /* PerfectImageTests.m */; };
 		E0024F831C3EDE5700CC3873 /* PerfectImageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0024F821C3EDE5700CC3873 /* PerfectImageUITests.m */; };
+		E0024F951C3EDFAC00CC3873 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E0024F941C3EDFAC00CC3873 /* Photo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		E0024F7E1C3EDE5700CC3873 /* PerfectImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerfectImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0024F821C3EDE5700CC3873 /* PerfectImageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerfectImageUITests.m; sourceTree = "<group>"; };
 		E0024F841C3EDE5700CC3873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0024F931C3EDFAC00CC3873 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		E0024F941C3EDFAC00CC3873 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +106,9 @@
 		E0024F591C3EDE5700CC3873 /* PerfectImage */ = {
 			isa = PBXGroup;
 			children = (
-				E0024F5D1C3EDE5700CC3873 /* AppDelegate.h */,
-				E0024F5E1C3EDE5700CC3873 /* AppDelegate.m */,
-				E0024F601C3EDE5700CC3873 /* ViewController.h */,
-				E0024F611C3EDE5700CC3873 /* ViewController.m */,
-				E0024F631C3EDE5700CC3873 /* Main.storyboard */,
-				E0024F691C3EDE5700CC3873 /* Assets.xcassets */,
-				E0024F6B1C3EDE5700CC3873 /* LaunchScreen.storyboard */,
-				E0024F6E1C3EDE5700CC3873 /* Info.plist */,
-				E0024F661C3EDE5700CC3873 /* PerfectImage.xcdatamodeld */,
+				E0024F901C3EDEC300CC3873 /* Data Model */,
+				E0024F921C3EDEF500CC3873 /* View */,
+				E0024F911C3EDED700CC3873 /* Controllers */,
 				E0024F5A1C3EDE5700CC3873 /* Supporting Files */,
 			);
 			path = PerfectImage;
@@ -120,6 +117,9 @@
 		E0024F5A1C3EDE5700CC3873 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E0024F5D1C3EDE5700CC3873 /* AppDelegate.h */,
+				E0024F5E1C3EDE5700CC3873 /* AppDelegate.m */,
+				E0024F6E1C3EDE5700CC3873 /* Info.plist */,
 				E0024F5B1C3EDE5700CC3873 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -141,6 +141,35 @@
 				E0024F841C3EDE5700CC3873 /* Info.plist */,
 			);
 			path = PerfectImageUITests;
+			sourceTree = "<group>";
+		};
+		E0024F901C3EDEC300CC3873 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0024F661C3EDE5700CC3873 /* PerfectImage.xcdatamodeld */,
+				E0024F931C3EDFAC00CC3873 /* Photo.h */,
+				E0024F941C3EDFAC00CC3873 /* Photo.m */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		E0024F911C3EDED700CC3873 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0024F601C3EDE5700CC3873 /* ViewController.h */,
+				E0024F611C3EDE5700CC3873 /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E0024F921C3EDEF500CC3873 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0024F631C3EDE5700CC3873 /* Main.storyboard */,
+				E0024F6B1C3EDE5700CC3873 /* LaunchScreen.storyboard */,
+				E0024F691C3EDE5700CC3873 /* Assets.xcassets */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +239,7 @@
 				TargetAttributes = {
 					E0024F561C3EDE5700CC3873 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = RYF7YHAMY5;
 					};
 					E0024F721C3EDE5700CC3873 = {
 						CreatedOnToolsVersion = 7.2;
@@ -276,6 +306,7 @@
 				E0024F621C3EDE5700CC3873 /* ViewController.m in Sources */,
 				E0024F681C3EDE5700CC3873 /* PerfectImage.xcdatamodeld in Sources */,
 				E0024F5F1C3EDE5700CC3873 /* AppDelegate.m in Sources */,
+				E0024F951C3EDFAC00CC3873 /* Photo.m in Sources */,
 				E0024F5C1C3EDE5700CC3873 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PerfectImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abearablecode.PerfectImage;
@@ -426,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PerfectImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abearablecode.PerfectImage;
