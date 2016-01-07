@@ -13,6 +13,7 @@
 @interface Photo : NSObject <NSCoding>
 
 @property UIImage *image;
+@property UIImage *thumbnail;
 @property NSString *photoID;
 @property BOOL isFavorite;
 @property double latitude;
