@@ -9,7 +9,7 @@
 #import "PhotoViewController.h"
 #import "Photo.h"
 
-@interface PhotoViewController () <PhotoViewControllerDelegate>
+@interface PhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *photoImage;
 @property (weak, nonatomic) IBOutlet UIImageView *userPicture;
 @property (weak, nonatomic) IBOutlet UILabel *userFullname;
@@ -37,7 +37,6 @@
     if (self.isFavorite) {
         self.heartButton.hidden = YES;
     }
-
     
 }
 - (IBAction)onHeartPressed:(UIButton *)sender {
@@ -47,11 +46,11 @@
         [self.favoritesArray addObject:self.photo];
     } else {
         [self.favoritesArray removeObject:self.photo];
-
     }
 
     [self save];
-    [self.delegate didTappedHeart];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"favoritesChanged" object:nil];
 }
 
 #pragma - mark Persistence
@@ -72,7 +71,5 @@
     [userDefaults synchronize];
     
 }
-
-
 
 @end

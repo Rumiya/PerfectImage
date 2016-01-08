@@ -11,7 +11,7 @@
 #import "ThumbnailCollectionViewCell.h"
 #import "Photo.h"
 
-@interface FavoritesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PhotoViewControllerDelegate>
+@interface FavoritesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property NSMutableArray *favoritesArray;
 
@@ -31,12 +31,24 @@
     }
 
     [self setcollectionViewFloat];
-
 }
 
-- (void)didTappedHeart{
+- (void)viewDidAppear:(BOOL)animated{
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleFavoritesChange:)
+                                                 name:@"favoritesChanged"
+                                               object:nil];
+}
+
+//- (void)viewDidDisappear:(BOOL)animated{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
+
+- (void)handleFavoritesChange:(NSNotification *)notification{
     [self load];
     [self.collectionView reloadData];
+
 }
 
 
@@ -100,7 +112,5 @@
     self.favoritesArray = [NSKeyedUnarchiver unarchiveObjectWithData:notesData];
 
 }
-
-
 
 @end

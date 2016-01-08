@@ -12,7 +12,7 @@
 #import "FavoritesViewController.h"
 #import "Photo.h"
 
-@interface SearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate,   UISearchBarDelegate>
+@interface SearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
