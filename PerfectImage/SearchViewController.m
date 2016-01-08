@@ -169,6 +169,7 @@
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         vc.photo = [self.photos objectAtIndex:indexPath.row];
         vc.isFavorite = NO;
+
     }
 
 }

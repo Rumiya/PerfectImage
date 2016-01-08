@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 @class Photo;
-@interface PhotoViewController : UIViewController
+@protocol PhotoViewControllerDelegate <NSObject>
 
+@optional
+
+- (void) didTappedHeart;
+
+@end
+
+@interface PhotoViewController : UIViewController
+@property (nonatomic, assign) id <PhotoViewControllerDelegate> delegate;
 @property Photo *photo;
 @property BOOL isFavorite;
 

@@ -9,7 +9,7 @@
 #import "PhotoViewController.h"
 #import "Photo.h"
 
-@interface PhotoViewController ()
+@interface PhotoViewController () <PhotoViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photoImage;
 @property (weak, nonatomic) IBOutlet UIImageView *userPicture;
 @property (weak, nonatomic) IBOutlet UILabel *userFullname;
@@ -35,8 +35,7 @@
     }
 
     if (self.isFavorite) {
-        self.heartButton.enabled = NO;
-        self.heartButton.selected = YES;
+        self.heartButton.hidden = YES;
     }
 
     
@@ -52,6 +51,7 @@
     }
 
     [self save];
+    [self.delegate didTappedHeart];
 }
 
 #pragma - mark Persistence

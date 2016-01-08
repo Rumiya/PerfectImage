@@ -11,7 +11,7 @@
 #import "ThumbnailCollectionViewCell.h"
 #import "Photo.h"
 
-@interface FavoritesViewController ()
+@interface FavoritesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PhotoViewControllerDelegate>
 
 @property NSMutableArray *favoritesArray;
 
@@ -30,7 +30,15 @@
         self.favoritesArray = [NSMutableArray new];
     }
 
+    [self setcollectionViewFloat];
+
 }
+
+- (void)didTappedHeart{
+    [self load];
+    [self.collectionView reloadData];
+}
+
 
 #pragma mark - Collection View
 
@@ -58,7 +66,7 @@
 
     // Set up Collection View
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake(self.view.frame.size.width/3 - 5, self.view.frame.size.width/3 - 5);
+    flowLayout.itemSize = CGSizeMake(self.view.frame.size.width/3 - 10, self.view.frame.size.width/3 - 10);
     flowLayout.minimumLineSpacing = 5.0f;
     flowLayout.minimumInteritemSpacing = 5.0f;
     flowLayout.sectionInset = UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f);
@@ -79,7 +87,6 @@
     }
     
 }
-
 
 
 #pragma - mark Persistence
