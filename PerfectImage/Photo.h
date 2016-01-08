@@ -12,7 +12,10 @@
 @interface Photo : NSObject
 
 @property UIImage *image;
-
+@property NSString *photoID;
+@property NSString *userID;
+@property NSString *userFullname;
+@property UIImage *userPic;
 
 -(instancetype) initWithDictionary:(NSDictionary *)dictionary;
 

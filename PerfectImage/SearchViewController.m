@@ -9,15 +9,14 @@
 #import "SearchViewController.h"
 #import "ThumbnailCollectionViewCell.h"
 #import "PhotoViewController.h"
+#import "FavoritesViewController.h"
 #import "Photo.h"
 
 @interface SearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate,   UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
-
 @property NSMutableArray *photos;
-@property NSMutableArray *favoritesArray;
 @property NSString *clientId;
 @property NSString *keyword;
 @property NSURL *nextUrl;
@@ -39,6 +38,7 @@
     self.clientId = configuration[@"Instagram API"][@"Client ID"];
 
     [self setcollectionViewFloat];
+
     
 }
 
@@ -92,6 +92,8 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+     searchBar.text = [searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
     if ([searchBar.text length] != 0)
     {
         self.continueSearch = NO;
@@ -134,14 +136,14 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
-
     ThumbnailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 
-    Photo *photo = [self.photos objectAtIndex:indexPath.row] ;
+    if (self.photos.count > 0 && self.photos.count >= indexPath.row){
 
+        Photo *photo = [self.photos objectAtIndex:indexPath.row] ;
+        cell.thumbnailImage.image = photo.image;
 
-    cell.thumbnailImage.image = photo.image;
-    
+    }
     
     return cell;
 }
