@@ -50,29 +50,32 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="thumbnailImage" destination="VzU-6o-Yhq" id="VnC-kx-gaf"/>
-                                            <segue destination="o9k-of-6sa" kind="show" id="Z07-fw-vNO"/>
+                                            <segue destination="o9k-of-6sa" kind="show" identifier="FavPhotoDetailSegue" id="Z07-fw-vNO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="8R4-W5-DFc" id="n4q-Hb-CIR"/>
-                                    <outlet property="delegate" destination="8R4-W5-DFc" id="vzg-yq-IFl"/>
+                                    <outlet property="dataSource" destination="7m2-Vo-zzF" id="3m2-qO-Uds"/>
+                                    <outlet property="delegate" destination="7m2-Vo-zzF" id="ibz-OX-IzK"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wRS-nJ-BY5" firstAttribute="top" secondItem="Vem-4v-t0V" secondAttribute="bottom" id="TUj-Gk-MWp"/>
-                            <constraint firstItem="Vem-4v-t0V" firstAttribute="top" secondItem="hBe-5p-XEg" secondAttribute="top" id="lgR-E2-iPE"/>
-                            <constraint firstAttribute="trailing" secondItem="Vem-4v-t0V" secondAttribute="trailing" id="tQ2-l0-qIw"/>
-                            <constraint firstItem="Vem-4v-t0V" firstAttribute="leading" secondItem="hBe-5p-XEg" secondAttribute="leading" id="yvk-UH-ODd"/>
+                            <constraint firstItem="Vem-4v-t0V" firstAttribute="leading" secondItem="hBe-5p-XEg" secondAttribute="leading" id="5g1-g7-rAs"/>
+                            <constraint firstItem="wRS-nJ-BY5" firstAttribute="top" secondItem="Vem-4v-t0V" secondAttribute="bottom" id="IPO-GR-TfM"/>
+                            <constraint firstAttribute="trailing" secondItem="Vem-4v-t0V" secondAttribute="trailing" id="NyU-ku-FMm"/>
+                            <constraint firstItem="Vem-4v-t0V" firstAttribute="top" secondItem="hBe-5p-XEg" secondAttribute="top" id="jFz-JV-nMe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Perfect Images" id="e07-uC-9oB"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Vem-4v-t0V" id="RRy-WD-vQV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9wG-HZ-UXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="513" y="501"/>
+            <point key="canvasLocation" x="390" y="501"/>
         </scene>
         <!--Find a Perfect Image-->
         <scene sceneID="rcy-3H-8Sr">
@@ -244,6 +247,7 @@
                     <navigationItem key="navigationItem" id="oVU-Q1-gwy"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="heartButton" destination="QhT-mg-A01" id="B1k-9b-uG4"/>
                         <outlet property="photoImage" destination="Ivc-bh-Bz8" id="LTP-gh-KpD"/>
                         <outlet property="userFullname" destination="Z1R-ZZ-g9L" id="g57-he-wXh"/>
                         <outlet property="userPicture" destination="VKq-T5-CUn" id="jEb-B1-tiU"/>
@@ -315,6 +319,6 @@
         <image name="heartWhite" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yK3-J6-DeD"/>
+        <segue reference="Z07-fw-vNO"/>
     </inferredMetricsTieBreakers>
 </document>

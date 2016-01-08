@@ -33,4 +33,25 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.image = [decoder decodeObjectForKey:@"image"];
+        self.photoID = [decoder decodeObjectForKey:@"photoID"];
+        self.userID = [decoder decodeObjectForKey:@"userID"];
+        self.userFullname = [decoder decodeObjectForKey:@"userFullname"];
+        self.userPic = [decoder decodeObjectForKey:@"userPic"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:_image forKey:@"image"];
+    [encoder encodeObject:_photoID forKey:@"photoID"];
+    [encoder encodeObject:_userID forKey:@"userID"];
+    [encoder encodeObject:_userFullname forKey:@"userFullname"];
+    [encoder encodeObject:_userPic forKey:@"userPic"];
+
+}
+
+
 @end

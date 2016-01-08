@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface Photo : NSObject
+@interface Photo : NSObject <NSCoding>
 
 @property UIImage *image;
 @property NSString *photoID;

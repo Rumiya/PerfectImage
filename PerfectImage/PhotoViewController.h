@@ -11,5 +11,6 @@
 @interface PhotoViewController : UIViewController
 
 @property Photo *photo;
+@property BOOL isFavorite;
 
 @end

@@ -124,7 +124,6 @@
 
 #pragma mark - Collection View
 
-
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
     if (self.photos == nil) {
@@ -169,6 +168,7 @@
         PhotoViewController *vc = segue.destinationViewController;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         vc.photo = [self.photos objectAtIndex:indexPath.row];
+        vc.isFavorite = NO;
     }
 
 }
