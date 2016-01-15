@@ -15,6 +15,9 @@
 @interface SearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelBtnWidth;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property NSMutableArray *photos;
 @property NSString *clientId;
@@ -29,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.cancelBtnWidth.constant = 0;
 
     self.photos = [[NSMutableArray alloc] init];
 
@@ -45,9 +50,14 @@
 // get images and atributes
 - (void) getInstagramData:(NSURL *)url
 {
+    [self.searchBar setUserInteractionEnabled:NO];
+    self.searchBar.alpha = .75;
+
     [self.spinner startAnimating];
+    
     if ((self.photos != nil) && self.newSearch) {
         [self.photos  removeAllObjects];
+        [self.collectionView reloadData];
     }
 
     NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -79,6 +89,9 @@
             self.newSearch = NO;
             
             [self.spinner stopAnimating];
+            [self.searchBar setUserInteractionEnabled:YES];
+            self.searchBar.alpha = 1.0;
+
         });
 
         
@@ -92,6 +105,8 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+
+
      searchBar.text = [searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if ([searchBar.text length] != 0)
@@ -102,15 +117,37 @@
 
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@",self.keyword,self.clientId]];
 
+        [self hideCancelButton];
+        
         [self getInstagramData:url];
     }
     
     [searchBar resignFirstResponder];
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    self.cancelButton.hidden = false;
+    self.cancelBtnWidth.constant = 56;
+}
+
 - (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
 }
+
+- (IBAction)onCancelButtonPressed:(UIButton *)sender {
+
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+
+    [self hideCancelButton];
+
+}
+
+- (void) hideCancelButton{
+    self.cancelButton.hidden = true;
+    self.cancelBtnWidth.constant = 0;
+}
+
 
 #pragma mark - Scroll View
 
